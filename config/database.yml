@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  host: localhost
+  username: postgres
+  password: postgres
+  database: socialvk
+  schema_search_path: public
+  encoding: utf8
+  pool: 25
