@@ -17,7 +17,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
       end
     else
       clean_up_passwords resource
-      return render json: { success: false, errors: resource.errors.full_messages }
+      return render json: { success: false, errors: resource.errors }, status: 422
     end
   end
 
@@ -51,6 +51,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
   end
 
   def fix_password_confirmation
+    return unless params[:user]
     params[:user][:password_confirmation] = "" unless params[:user][:password_confirmation]
   end
 

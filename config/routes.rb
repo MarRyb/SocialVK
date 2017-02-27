@@ -14,7 +14,11 @@ Rails.application.routes.draw do
         get "current_user" =>"users#show_current_user", as: :current_user
       end
 
-      resources :users, only: [:show, :index]
+      resources :users, only: [:show, :index] do
+        get :friends, on: :collection
+      end
+
+      resources :wall_posts, only: [:index, :create]
 
     end
   end

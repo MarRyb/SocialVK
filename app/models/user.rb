@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name, :nickname
   validates_uniqueness_of :nickname
 
+  has_many :wall_posts
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
